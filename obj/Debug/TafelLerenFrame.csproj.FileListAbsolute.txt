@@ -1,0 +1,14 @@
+C:\Users\chris\source\repos\TafelLerenFrame\bin\Debug\TafelLerenFrame.exe.config
+C:\Users\chris\source\repos\TafelLerenFrame\bin\Debug\TafelLerenFrame.exe
+C:\Users\chris\source\repos\TafelLerenFrame\bin\Debug\TafelLerenFrame.pdb
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame.csprojAssemblyReference.cache
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\MainWindow.g.cs
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\App.g.cs
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame_MarkupCompile.cache
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame_MarkupCompile.lref
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\MainWindow.baml
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame.g.resources
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame.Properties.Resources.resources
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame.csproj.GenerateResource.cache
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame.exe
+C:\Users\chris\source\repos\TafelLerenFrame\obj\Debug\TafelLerenFrame.pdb

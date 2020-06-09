@@ -1,0 +1,35 @@
+﻿<Window x:Class="TafelLerenFrame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TafelLerenFrame"
+        mc:Ignorable="d"
+        Title="Tafel Tester v0.00000002 pre-Alfa" Height="450" Width="500">
+    <Grid>
+        <Label Content="Tafel Tester" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Height="33" Margin="26,29,0,0" VerticalAlignment="Top" Width="344"/>
+        <Label Content="Vul de tafel in waarmee je wilt oevenen:" FontSize="14"  HorizontalAlignment="Left" Height="30" Margin="26,67,0,0" VerticalAlignment="Top" Width="344"/>
+        <TextBox x:Name="tafelgetal" HorizontalAlignment="Left" Height="16" Margin="291,74,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
+        <Button Content="Genereer de sommen"  HorizontalAlignment="Left" Height="27" Margin="26,102,0,0" VerticalAlignment="Top" Width="130" Click="genereer"/>
+        <Label Content="Sommen:" FontSize="14" HorizontalAlignment="Left" Height="29" Margin="26,150,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="som1" Content="" HorizontalAlignment="Left" Height="33" Margin="26,187,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="som2" Content="" HorizontalAlignment="Left" Height="33" Margin="26,215,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="som3" Content="" HorizontalAlignment="Left" Height="33" Margin="26,243,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="som4" Content="" HorizontalAlignment="Left" Height="33" Margin="26,271,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="som5" Content="" HorizontalAlignment="Left" Height="33" Margin="26,299,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="antwoord1" HorizontalAlignment="Left" Height="21" Margin="87,190,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="antwoord2" HorizontalAlignment="Left" Height="21" Margin="87,218,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="antwoord3" HorizontalAlignment="Left" Height="21" Margin="87,246,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="antwoord4" HorizontalAlignment="Left" Height="21" Margin="87,274,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="antwoord5" HorizontalAlignment="Left" Height="21" Margin="87,302,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="gf1" Content="Label" HorizontalAlignment="Left" Height="27" Margin="198,189,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label x:Name="gf2" Content="Label" HorizontalAlignment="Left" Height="27" Margin="198,215,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label x:Name="gf3" Content="Label" HorizontalAlignment="Left" Height="27" Margin="198,243,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label x:Name="gf4" Content="Label" HorizontalAlignment="Left" Height="27" Margin="198,271,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label x:Name="gf5" Content="Label" HorizontalAlignment="Left" Height="27" Margin="198,299,0,0" VerticalAlignment="Top" Width="114"/>
+        <Button Content="Laat de score zien" HorizontalAlignment="Left" Height="26"  Margin="26,334,0,0" VerticalAlignment="Top" Width="130" Click="controleer"/>
+        <Label Content="Je hebt een:" FontSize="14" HorizontalAlignment="Left" Height="28" Margin="26,374,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label x:Name="cijfer" Content="10" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Height="48" Margin="103,369,0,0" VerticalAlignment="Top" Width="47"/>
+
+    </Grid>
+</Window>
