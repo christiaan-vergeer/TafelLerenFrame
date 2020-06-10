@@ -18,6 +18,7 @@ namespace TafelLerenFrame
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
     public partial class MainWindow : Window
     {
         int Tafelgetal = 0;
@@ -33,14 +34,18 @@ namespace TafelLerenFrame
 
         private void genereer(object sender, RoutedEventArgs e)
         {
-            Tafelgetal = Int32.Parse(tafelgetal.Text);
-            
 
+            try
+            {
+                Tafelgetal = Int32.Parse(tafelgetal.Text);
+            }
+            catch (Exception)
+            {
+                Tafelgetal = 0;
+            }
 
             for (int i = 0; i < 5; i++)
             {
-
-                
                 table_array[i] = random.Next(1, 10);
             }
 
@@ -51,15 +56,60 @@ namespace TafelLerenFrame
             som5.Content = Tafelgetal + " x " + table_array[4] + " =";
         }
 
+
         private void controleer(object sender, RoutedEventArgs e)
         {
-            awnser_array[0] = Int32.Parse(antwoord1.Text);
-            awnser_array[1] = Int32.Parse(antwoord2.Text);
-            awnser_array[2] = Int32.Parse(antwoord3.Text);
-            awnser_array[3] = Int32.Parse(antwoord4.Text);
-            awnser_array[4] = Int32.Parse(antwoord5.Text);
 
-            if((table_array[0] * Tafelgetal) == awnser_array[0])
+            // parsing //
+
+            try
+            {
+                awnser_array[0] = Int32.Parse(antwoord1.Text);
+            }
+            catch (Exception)
+            {
+                awnser_array[0] = 0;
+            }
+            try
+            {
+                awnser_array[1] = Int32.Parse(antwoord2.Text);
+            }
+            catch (Exception)
+            {
+
+                awnser_array[1] = 0;
+            }
+            try
+            {
+                awnser_array[2] = Int32.Parse(antwoord3.Text);
+            }
+            catch (Exception)
+            {
+
+                awnser_array[2] = 0;
+            }
+            try
+            {
+                awnser_array[3] = Int32.Parse(antwoord4.Text);
+            }
+            catch (Exception)
+            {
+
+                awnser_array[3] = 0;
+            }
+            try
+            {
+                awnser_array[4] = Int32.Parse(antwoord5.Text);
+            }
+            catch (Exception)
+            {
+
+                awnser_array[4] = 0;
+            }
+
+            // Awnser Check//
+
+            if ((table_array[0] * Tafelgetal) == awnser_array[0])
             {
                 gf1.Content = "goed!";
                 eindcijfer++;
@@ -69,11 +119,52 @@ namespace TafelLerenFrame
                 gf1.Content = "fout";
             }
 
-            cijfer.Content = eindcijfer*2;
+            if ((table_array[1] * Tafelgetal) == awnser_array[1])
+            {
+                gf2.Content = "goed!";
+                eindcijfer++;
+            }
+            else
+            {
+                gf2.Content = "fout";
+            }
+
+            if ((table_array[2] * Tafelgetal) == awnser_array[2])
+            {
+                gf3.Content = "goed!";
+                eindcijfer++;
+            }
+            else
+            {
+                gf3.Content = "fout";
+            }
+
+            if ((table_array[3] * Tafelgetal) == awnser_array[3])
+            {
+                gf4.Content = "goed!";
+                eindcijfer++;
+            }
+            else
+            {
+                gf4.Content = "fout";
+            }
+
+            if ((table_array[4] * Tafelgetal) == awnser_array[4])
+            {
+                gf5.Content = "goed!";
+                eindcijfer++;
+            }
+            else
+            {
+                gf5.Content = "fout";
+            }
+
+            cijfer.Content = eindcijfer * 2;
 
             eindcijfer = 0;
             Tafelgetal = 0;
 
         }
+                
     }
 }
