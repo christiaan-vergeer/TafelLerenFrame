@@ -21,13 +21,15 @@ namespace TafelLerenFrame
     /// 
     public partial class MainWindow : Window
     {
-        int Tafelgetal = 0; //user imput tafel
+       // int Tafelgetal = 0; //user imput tafel
         Random random = new Random();
-        int[] table_array = { 0, 0, 0, 0, 0 }; // storage of random numbers
+        int[] factor_array = { 0, 0, 0, 0, 0 }; // storage of random numbers for factors
+        int[] table_array = { 0, 0, 0, 0, 0 }; // storage of (random) numbers for the tablenumber
         int[] awnser_array = { 0, 0, 0, 0, 0 };  // user imput awnser
+        int[] checker_array = { 0, 0, 0, 0, 0 }; // checks the random multiplier
         int eindcijfer;  // user output
         int Rchecker; // random asset
-        int inputflag = 0;
+        int inputflag = 0; //checks if all fields are filled
 
         public MainWindow()
         {
@@ -36,33 +38,50 @@ namespace TafelLerenFrame
 
         private void genereer(object sender, RoutedEventArgs e)
         {
-            reset();            
-            
+            reset();
+            inputflag = 0;
+
             // user imput lezen //
             try
             {
-                Tafelgetal = Int32.Parse(tgetal.Text);
+                table_array[0] = Int32.Parse(tgetal.Text);
+                table_array[1] = Int32.Parse(tgetal.Text);
+                table_array[2] = Int32.Parse(tgetal.Text);
+                table_array[3] = Int32.Parse(tgetal.Text);
+                table_array[4] = Int32.Parse(tgetal.Text);
             }
             catch (Exception)
             {
-                Tafelgetal = 0;
-            }
-            // random number generator//
-            for (int i = 0; i < 5; i++)
-            {
-                Rchecker = random.Next(1, 10);
-                while (Rchecker == table_array[0] || Rchecker == table_array[1] || Rchecker == table_array[2] || Rchecker == table_array[3] || Rchecker == table_array[4])
-                {
-                    Rchecker = random.Next(1, 10);
-                }
-                table_array[i] = Rchecker;
+                table_array[0] = 0;
+                table_array[1] = 0;
+                table_array[2] = 0;
+                table_array[3] = 0;
+                table_array[4] = 0;
+                inputflag = 1;
             }
 
-            som1.Content = Tafelgetal + " x " + table_array[0] + " =";
-            som2.Content = Tafelgetal + " x " + table_array[1] + " =";
-            som3.Content = Tafelgetal + " x " + table_array[2] + " =";
-            som4.Content = Tafelgetal + " x " + table_array[3] + " =";
-            som5.Content = Tafelgetal + " x " + table_array[4] + " =";
+            if (inputflag == 0){
+                // random number generator//
+                for (int i = 0; i < 5; i++)
+                {
+                    Rchecker = random.Next(1, 10);
+                    while (Rchecker == factor_array[0] || Rchecker == factor_array[1] || Rchecker == factor_array[2] || Rchecker == factor_array[3] || Rchecker == factor_array[4])
+                    {
+                        Rchecker = random.Next(1, 10);
+                    }
+                    factor_array[i] = Rchecker;
+                }
+
+                som1.Content = table_array[0] + " x " + factor_array[0] + " =";
+                som2.Content = table_array[1] + " x " + factor_array[1] + " =";
+                som3.Content = table_array[2] + " x " + factor_array[2] + " =";
+                som4.Content = table_array[3] + " x " + factor_array[3] + " =";
+                som5.Content = table_array[4] + " x " + factor_array[4] + " =";
+            }
+            else
+            {
+              MessageBox.Show("Voer alleen een heel getal in","Fout");
+            }
         }
 
 
@@ -121,7 +140,7 @@ namespace TafelLerenFrame
 
             if (inputflag == 0)
             {
-                if ((table_array[0] * Tafelgetal) == awnser_array[0])
+                if ((factor_array[0] * table_array[0]) == awnser_array[0])
                 {
                     gf1.Content = "goed!";
                     gf1.Foreground = Brushes.Green;
@@ -133,7 +152,7 @@ namespace TafelLerenFrame
                     gf1.Foreground = Brushes.Red;
                 }
 
-                if ((table_array[1] * Tafelgetal) == awnser_array[1])
+                if ((factor_array[1] * table_array[1]) == awnser_array[1])
                 {
                     gf2.Content = "goed!";
                     gf2.Foreground = Brushes.Green;
@@ -145,7 +164,7 @@ namespace TafelLerenFrame
                     gf2.Foreground = Brushes.Red;
                 }
 
-                if ((table_array[2] * Tafelgetal) == awnser_array[2])
+                if ((factor_array[2] * table_array[2]) == awnser_array[2])
                 {
                     gf3.Content = "goed!";
                     gf3.Foreground = Brushes.Green;
@@ -157,7 +176,7 @@ namespace TafelLerenFrame
                     gf3.Foreground = Brushes.Red;
                 }
 
-                if ((table_array[3] * Tafelgetal) == awnser_array[3])
+                if ((factor_array[3] * table_array[3]) == awnser_array[3])
                 {
                     gf4.Content = "goed!";
                     gf4.Foreground = Brushes.Green;
@@ -169,7 +188,7 @@ namespace TafelLerenFrame
                     gf4.Foreground = Brushes.Red;
                 }
 
-                if ((table_array[4] * Tafelgetal) == awnser_array[4])
+                if ((factor_array[4] * table_array[4]) == awnser_array[4])
                 {
                     gf5.Content = "goed!";
                     gf5.Foreground = Brushes.Green;
@@ -209,10 +228,41 @@ namespace TafelLerenFrame
         }
 
 
+       
+        private void genereer_radom(object sender, RoutedEventArgs e)
+        {
+            reset();
+            //generates the factor//
+            for (int i = 0; i < 5; i++)
+            {
+                factor_array[i] = random.Next(1, 10);
+            }
+
+            //generates the table and checks if the multiplication already exicst//
+            for (int i = 0; i < 5; i++)
+            {
+                Rchecker = random.Next(1, 10)*factor_array[i];
+                while (Rchecker == checker_array[0] || Rchecker == checker_array[1] || Rchecker == checker_array[2] || Rchecker == checker_array[3] || Rchecker == checker_array[4])
+                {
+                    Rchecker = random.Next(1, 10)*factor_array[i];
+
+                }
+
+                checker_array[i] = Rchecker;
+                Rchecker = Rchecker / factor_array[i];
+                table_array[i] = Rchecker;
+
+                som1.Content = table_array[0] + " x " + factor_array[0] + " =";
+                som2.Content = table_array[1] + " x " + factor_array[1] + " =";
+                som3.Content = table_array[2] + " x " + factor_array[2] + " =";
+                som4.Content = table_array[3] + " x " + factor_array[3] + " =";
+                som5.Content = table_array[4] + " x " + factor_array[4] + " =";
+            }
+        }
+
         private void reset()
         {
             eindcijfer = 0;
-            Tafelgetal = 0;
             antwoord1.Text = "";
             antwoord2.Text = "";
             antwoord3.Text = "";
@@ -223,6 +273,16 @@ namespace TafelLerenFrame
             table_array[2] = 0;
             table_array[3] = 0;
             table_array[4] = 0;
+            checker_array[0] = 0;
+            checker_array[1] = 0;
+            checker_array[2] = 0;
+            checker_array[3] = 0;
+            checker_array[4] = 0;
+            factor_array[0] = 0;
+            factor_array[1] = 0;
+            factor_array[2] = 0;
+            factor_array[3] = 0;
+            factor_array[4] = 0;
             gf1.Content = "";
             gf2.Content = "";
             gf3.Content = "";
@@ -231,6 +291,6 @@ namespace TafelLerenFrame
             score_text.Content = "";
             cijfer.Content = "";
         }
-                
+
     }
 }
