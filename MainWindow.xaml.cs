@@ -27,6 +27,7 @@ namespace TafelLerenFrame
         int[] awnser_array = { 0, 0, 0, 0, 0 };  // user imput awnser
         int eindcijfer;  // user output
         int Rchecker; // random asset
+        int inputflag = 0;
 
         public MainWindow()
         {
@@ -67,6 +68,7 @@ namespace TafelLerenFrame
 
         private void controleer(object sender, RoutedEventArgs e)
         {
+            inputflag = 0;
 
             // parsing //
             try
@@ -76,6 +78,7 @@ namespace TafelLerenFrame
             catch (Exception)
             {
                 awnser_array[0] = 0;
+                inputflag = 1;
             }
             try
             {
@@ -84,6 +87,7 @@ namespace TafelLerenFrame
             catch (Exception)
             {
                 awnser_array[1] = 0;
+                inputflag = 1;
             }
             try
             {
@@ -92,6 +96,7 @@ namespace TafelLerenFrame
             catch (Exception)
             {
                 awnser_array[2] = 0;
+                inputflag = 1;
             }
             try
             {
@@ -100,6 +105,7 @@ namespace TafelLerenFrame
             catch (Exception)
             {
                 awnser_array[3] = 0;
+                inputflag = 1;
             }
             try
             {
@@ -108,87 +114,98 @@ namespace TafelLerenFrame
             catch (Exception)
             {
                 awnser_array[4] = 0;
+                inputflag = 1;
             }
 
             // Awnser Check//
 
-            if ((table_array[0] * Tafelgetal) == awnser_array[0])
+            if (inputflag == 0)
             {
-                gf1.Content = "goed!"; 
-                gf1.Foreground = Brushes.Green;
-                eindcijfer++;
-            }
-            else
-            {
-                gf1.Content = "fout";
-                gf1.Foreground = Brushes.Red;
-            }
+                if ((table_array[0] * Tafelgetal) == awnser_array[0])
+                {
+                    gf1.Content = "goed!";
+                    gf1.Foreground = Brushes.Green;
+                    eindcijfer++;
+                }
+                else
+                {
+                    gf1.Content = "fout";
+                    gf1.Foreground = Brushes.Red;
+                }
 
-            if ((table_array[1] * Tafelgetal) == awnser_array[1])
-            {
-                gf2.Content = "goed!";
-                gf2.Foreground = Brushes.Green;
-                eindcijfer++;
-            }
-            else
-            {
-                gf2.Content = "fout";
-                gf2.Foreground = Brushes.Red;
-            }
+                if ((table_array[1] * Tafelgetal) == awnser_array[1])
+                {
+                    gf2.Content = "goed!";
+                    gf2.Foreground = Brushes.Green;
+                    eindcijfer++;
+                }
+                else
+                {
+                    gf2.Content = "fout";
+                    gf2.Foreground = Brushes.Red;
+                }
 
-            if ((table_array[2] * Tafelgetal) == awnser_array[2])
-            {
-                gf3.Content = "goed!";
-                gf3.Foreground = Brushes.Green;
-                eindcijfer++;
-            }
-            else
-            {
-                gf3.Content = "fout";
-                gf3.Foreground = Brushes.Red;
-            }
+                if ((table_array[2] * Tafelgetal) == awnser_array[2])
+                {
+                    gf3.Content = "goed!";
+                    gf3.Foreground = Brushes.Green;
+                    eindcijfer++;
+                }
+                else
+                {
+                    gf3.Content = "fout";
+                    gf3.Foreground = Brushes.Red;
+                }
 
-            if ((table_array[3] * Tafelgetal) == awnser_array[3])
-            {
-                gf4.Content = "goed!";
-                gf4.Foreground = Brushes.Green;
-                eindcijfer++;
-            }
-            else
-            {
-                gf4.Content = "fout";
-                gf4.Foreground = Brushes.Red;
-            }
+                if ((table_array[3] * Tafelgetal) == awnser_array[3])
+                {
+                    gf4.Content = "goed!";
+                    gf4.Foreground = Brushes.Green;
+                    eindcijfer++;
+                }
+                else
+                {
+                    gf4.Content = "fout";
+                    gf4.Foreground = Brushes.Red;
+                }
 
-            if ((table_array[4] * Tafelgetal) == awnser_array[4])
-            {
-                gf5.Content = "goed!";
-                gf5.Foreground = Brushes.Green;
-                eindcijfer++;
+                if ((table_array[4] * Tafelgetal) == awnser_array[4])
+                {
+                    gf5.Content = "goed!";
+                    gf5.Foreground = Brushes.Green;
+                    eindcijfer++;
+                }
+                else
+                {
+                    gf5.Content = "fout";
+                    gf5.Foreground = Brushes.Red;
+                }
             }
-            else
-            {
-                gf5.Content = "fout";
-                gf5.Foreground = Brushes.Red;
-            }
+            
 
             // eindcijfer bepaling + kleur op basis van cijfer//
-            score_text.Content = "Je hebt een:";
-            cijfer.Content = eindcijfer * 2;
+            if (inputflag == 0)
+            {
+                score_text.Content = "Je hebt een:";
+                cijfer.Content = eindcijfer * 2;
 
-            if (eindcijfer > 4 || eindcijfer == 4)
-            {
-                cijfer.Foreground = Brushes.Gold;
+                if (eindcijfer > 4 || eindcijfer == 4)
+                {
+                    cijfer.Foreground = Brushes.Gold;
+                }
+                else if (eindcijfer < 2 || eindcijfer == 2)
+                {
+                    cijfer.Foreground = Brushes.Red;
+                }
+                else if (eindcijfer > 2 && eindcijfer < 4)
+                {
+                    cijfer.Foreground = Brushes.Black;
+                }
             }
-            else if (eindcijfer < 2 || eindcijfer == 2)
+            else
             {
-                cijfer.Foreground = Brushes.Red;
+                score_text.Content = "Je hebt een vraag niet ingevuld";
             }
-            else if (eindcijfer > 2 && eindcijfer < 4)
-            {
-                cijfer.Foreground = Brushes.Black;
-            }            
-
         }
 
 
