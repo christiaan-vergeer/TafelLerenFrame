@@ -21,11 +21,12 @@ namespace TafelLerenFrame
     /// 
     public partial class MainWindow : Window
     {
-        int Tafelgetal = 0;
+        int Tafelgetal = 0; //user imput tafel
         Random random = new Random();
-        int[] table_array = { 0, 0, 0, 0, 0 };
-        int[] awnser_array = { 0, 0, 0, 0, 0 };
-        int eindcijfer;
+        int[] table_array = { 0, 0, 0, 0, 0 }; // storage of random numbers
+        int[] awnser_array = { 0, 0, 0, 0, 0 };  // user imput awnser
+        int eindcijfer;  // user output
+        int Rchecker; // random asset
 
         public MainWindow()
         {
@@ -34,19 +35,26 @@ namespace TafelLerenFrame
 
         private void genereer(object sender, RoutedEventArgs e)
         {
-
+            reset();            
+            
+            // user imput lezen //
             try
             {
-                Tafelgetal = Int32.Parse(tafelgetal.Text);
+                Tafelgetal = Int32.Parse(tgetal.Text);
             }
             catch (Exception)
             {
                 Tafelgetal = 0;
             }
-
+            // random number generator//
             for (int i = 0; i < 5; i++)
             {
-                table_array[i] = random.Next(1, 10);
+                Rchecker = random.Next(1, 10);
+                while (Rchecker == table_array[0] || Rchecker == table_array[1] || Rchecker == table_array[2] || Rchecker == table_array[3] || Rchecker == table_array[4])
+                {
+                    Rchecker = random.Next(1, 10);
+                }
+                table_array[i] = Rchecker;
             }
 
             som1.Content = Tafelgetal + " x " + table_array[0] + " =";
@@ -61,7 +69,6 @@ namespace TafelLerenFrame
         {
 
             // parsing //
-
             try
             {
                 awnser_array[0] = Int32.Parse(antwoord1.Text);
@@ -76,7 +83,6 @@ namespace TafelLerenFrame
             }
             catch (Exception)
             {
-
                 awnser_array[1] = 0;
             }
             try
@@ -85,7 +91,6 @@ namespace TafelLerenFrame
             }
             catch (Exception)
             {
-
                 awnser_array[2] = 0;
             }
             try
@@ -94,7 +99,6 @@ namespace TafelLerenFrame
             }
             catch (Exception)
             {
-
                 awnser_array[3] = 0;
             }
             try
@@ -103,7 +107,6 @@ namespace TafelLerenFrame
             }
             catch (Exception)
             {
-
                 awnser_array[4] = 0;
             }
 
@@ -170,24 +173,46 @@ namespace TafelLerenFrame
             }
 
             // eindcijfer bepaling + kleur op basis van cijfer//
-
+            score_text.Content = "Je hebt een:";
             cijfer.Content = eindcijfer * 2;
 
-            if (eindcijfer > 4)
+            if (eindcijfer > 4 || eindcijfer == 4)
             {
                 cijfer.Foreground = Brushes.Gold;
             }
-            else if (eindcijfer < 2)
+            else if (eindcijfer < 2 || eindcijfer == 2)
             {
                 cijfer.Foreground = Brushes.Red;
             }
             else if (eindcijfer > 2 && eindcijfer < 4)
             {
                 cijfer.Foreground = Brushes.Black;
-            }
+            }            
+
+        }
+
+
+        private void reset()
+        {
             eindcijfer = 0;
             Tafelgetal = 0;
-
+            antwoord1.Text = "";
+            antwoord2.Text = "";
+            antwoord3.Text = "";
+            antwoord4.Text = "";
+            antwoord5.Text = "";
+            table_array[0] = 0;
+            table_array[1] = 0;
+            table_array[2] = 0;
+            table_array[3] = 0;
+            table_array[4] = 0;
+            gf1.Content = "";
+            gf2.Content = "";
+            gf3.Content = "";
+            gf4.Content = "";
+            gf5.Content = "";
+            score_text.Content = "";
+            cijfer.Content = "";
         }
                 
     }
