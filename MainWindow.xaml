@@ -34,7 +34,7 @@
         <Button Content="Laat de score zien" HorizontalAlignment="Left" Height="26"  Margin="26,334,0,0" VerticalAlignment="Top" Width="130" Click="controleer" Grid.ColumnSpan="2"/>
         <Label x:Name="score_text"  Content="" FontSize="14" HorizontalAlignment="Left" Height="30" Margin="26,374,0,0" VerticalAlignment="Top" Width="206" Grid.ColumnSpan="2"/>
         <Label x:Name="cijfer" Content="" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Height="48" Margin="44.885,369,0,0" VerticalAlignment="Top" Width="47" Grid.Column="1"/>
-        <Button Content="Genereer random sommen"  HorizontalAlignment="Left" Height="27" Margin="192.6,102,0,0" VerticalAlignment="Top" Width="155" Click="genereer_radom" Grid.Column="1"/>
+        <Button Content="Genereer random sommen"  HorizontalAlignment="Left" Height="27" Margin="192.6,102,0,0" VerticalAlignment="Top" Width="155" Click="genereer_random" Grid.Column="1"/>
 
     </Grid>
 </Window>

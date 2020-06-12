@@ -229,7 +229,7 @@ namespace TafelLerenFrame
 
 
        
-        private void genereer_radom(object sender, RoutedEventArgs e)
+        private void genereer_random(object sender, RoutedEventArgs e)
         {
             reset();
             //generates the factor//
